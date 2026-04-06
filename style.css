@@ -1,0 +1,319 @@
+/* ============================================================
+   정책/약관 아카이브 스타일
+   ============================================================ */
+
+:root {
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #dee2e6;
+  --color-border-light: #e9ecef;
+  --color-text: #212529;
+  --color-text-secondary: #6c757d;
+  --color-primary: #1a3a5c;
+  --color-primary-light: #2a5a8c;
+  --color-primary-bg: #e8eef4;
+  --color-accent: #0d6efd;
+  --color-badge-latest: #198754;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --max-width: 860px;
+  --radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ─────────────────────────────── */
+.site-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 28px 24px;
+  text-align: center;
+}
+.site-header h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.site-header p {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+
+/* ── Layout ─────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Group Tabs (대분류) ────────────────── */
+.group-tabs {
+  display: flex;
+  gap: 0;
+  margin: 24px auto 0;
+  max-width: var(--max-width);
+  padding: 0 20px;
+}
+.group-tab {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+.group-tab:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.group-tab:last-child { border-radius: 0 var(--radius) var(--radius) 0; border-left: 0; }
+.group-tab[aria-selected="true"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.group-tab:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── Policy Cards (중분류) ──────────────── */
+.policy-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin: 20px auto 0;
+  max-width: var(--max-width);
+  padding: 0 20px;
+}
+.policy-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all .15s;
+  text-align: left;
+}
+.policy-card:hover { border-color: var(--color-primary-light); }
+.policy-card[aria-selected="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
+}
+.policy-card:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.policy-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.policy-card-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+/* ── Document Viewer ────────────────────── */
+.doc-viewer {
+  max-width: var(--max-width);
+  margin: 24px auto 60px;
+  padding: 0 20px;
+}
+
+.doc-header {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.doc-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.doc-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+.badge-latest {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--color-badge-latest);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.doc-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+}
+
+/* ── Version Dropdown ───────────────────── */
+.version-select-wrap {
+  margin-top: 16px;
+}
+.version-select-wrap label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+.version-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+.version-select:focus-visible {
+  outline: 3px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* ── Document Body ──────────────────────── */
+.doc-body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-sm);
+  line-height: 1.85;
+  font-size: 0.95rem;
+}
+.doc-body h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin: 32px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.doc-body h2:first-child { margin-top: 0; }
+.doc-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 24px 0 8px;
+}
+.doc-body p { margin: 10px 0; }
+.doc-body ol, .doc-body ul { margin: 8px 0 8px 24px; }
+.doc-body li { margin: 4px 0; }
+.doc-body strong { font-weight: 700; }
+.doc-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+.doc-body th, .doc-body td {
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  text-align: left;
+}
+.doc-body th {
+  background: var(--color-primary-bg);
+  font-weight: 700;
+}
+
+/* ── Version History ────────────────────── */
+.version-history {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.version-history h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+.version-history-list {
+  list-style: none;
+}
+.version-history-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 0.88rem;
+}
+.version-history-item:last-child { border-bottom: 0; }
+.version-history-item a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.version-history-item a:hover { text-decoration: underline; }
+.version-history-item .vh-date {
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+}
+.version-history-item .vh-current {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-badge-latest);
+}
+
+/* ── Empty State ────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary);
+}
+.empty-state p { font-size: 0.95rem; }
+
+/* ── Footer ─────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border-light);
+  margin-top: 40px;
+}
+
+/* ── Responsive ─────────────────────────── */
+@media (max-width: 600px) {
+  .site-header h1 { font-size: 1.15rem; }
+  .doc-header, .doc-body, .version-history { padding: 20px 18px; }
+  .doc-title { font-size: 1.1rem; }
+  .policy-cards { grid-template-columns: 1fr; }
+}
